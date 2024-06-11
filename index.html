@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Webpage</title>
+<style>
+  body {
+    background-color: #FCF3A0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Center content vertically */
+    height: 100vh;
+    flex-direction: column; /* Allow for vertical stacking */
+  }
+  .left-side {
+    width: 200px;
+    height: 100%;
+    background-color: #FE4444;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    clip-path: polygon(0 0,100% 0, 70% 100%, 0% 100%);
+    -webkit-clip-path: polygon(0 0,100% 0, 70% 100%, 0% 100%);
+    transition: width 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    overflow: hidden; 
+  }
+  .left-side:hover {
+    width: 500px;
+  }
+  .nav-button {
+    background-color: transparent;
+    border: none;
+    color: #840000;
+    font-size: 35px; 
+    cursor: pointer;
+    padding: 30px 40px; 
+    text-align: left;
+    font-weight: bold;
+    display: none; 
+    transition: opacity 0.3s ease, background-color 0.3s ease; 
+  }
+  .left-side:hover .nav-button {
+    display: block; 
+  }
+  .nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly darker background */
+  }
+  .container {
+    display: flex;
+    gap: 20px;
+    margin-top: 100px; /* Adjust margin to avoid overlap with sidebar */
+  }
+  .button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    transition: transform 0.3s;
+    border: 5px solid #000; /* Border around buttons */
+    padding: 10px; /* Space between image and border */
+    border-radius: 10px; /* Rounded corners */
+  }
+  .button img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .button:hover {
+    transform: scale(1.1);
+  }
+  .indextxt {
+    margin-top: 200px;
+    font-size: 100px;
+    color: #840000;
+  }
+</style>
+</head>
+<body>
+
+  <div class="indextxt">Maths Formulas</div>
+  <p style="color: #840000; font-size: 60px; margin-left: 200px;">
+    Dear students, have you ever wanted to explore all of the science behind math and dive into the infinite formulas that it possesses? Well fear no more. Here, you will be able to reach new grades, higher than ever. So what are you waiting for, click one of the buttons below and start memorizing the magic behind math.
+  </p>
+
+  <div class="left-side">
+    <button class="nav-button" onclick="goToPage('Home')" style="color: #000000;">Home</button>
+    <button class="nav-button" onclick="goToPage('Algebra')">Algebra</button>
+    <button class="nav-button" onclick="goToPage('Geometry')">Geometry</button>  
+  </div>
+
+  <div class="container">
+    <a href="algebra.html" class="button">
+      <img src="img/Algebra.png" alt="Algebra Image" onerror="this.src='placeholder.jpg';">
+      <span>Algebra</span>
+    </a>
+    <a href="geometry.html" class="button">
+      <img src="img/Geometry.png" alt="Geometry Image" onerror="this.src='placeholder.jpg';">
+      <span>Geometry</span>
+    </a>
+  </div>
+
+  <p style="font-size: 60px;">
+    <span style="color: #FCF3A0;">_</span>
+  </p>
+
+  <script>
+    const leftSide = document.querySelector('.left-side');
+    leftSide.addEventListener('mousemove', function(event) {
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+      
+      if (mouseX <= 200) {
+        leftSide.style.width = '500px'; 
+      } else {
+        leftSide.style.width = '200px'; 
+      }
+    });
+
+    function goToPage(page) {
+      // Redirect to respective pages
+      switch (page) {
+        case 'Home':
+          window.location.href = 'index.html'; 
+          break;
+        case 'Algebra':
+          window.location.href = 'algebra.html'; 
+          break;
+        case 'Geometry':
+          window.location.href = 'geometry.html'; 
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
